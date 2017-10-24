@@ -1,0 +1,27 @@
+{
+  "name": "wapo-tech-scraper",
+  "version": "1.0.0",
+  "description": "full stack application using Mongoose and Cheerio",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/risaco/WaPo-Tech-Scraper.git"
+  },
+  "author": "risaco",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/risaco/WaPo-Tech-Scraper/issues"
+  },
+  "homepage": "https://github.com/risaco/WaPo-Tech-Scraper#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^4.12.4",
+    "request": "^2.83.0"
+  }
+}
