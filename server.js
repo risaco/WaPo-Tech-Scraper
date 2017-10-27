@@ -16,6 +16,16 @@ var PORT = 3000;
 // ***** INITIALIZING EXPRESS *****
 var app = express();
 
+// Setting up handlebars
+var exphbs = require("express-handlebars");
+
+// Set default layout to main.handlebars
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+
+// Set the view engine to handlebars
+app.set("view engine", "handlebars");
+
+
 // using morgan logger for logging requests
 app.use(logger("dev"));
 // using body-parser for handling form submission
