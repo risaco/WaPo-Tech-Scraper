@@ -62,6 +62,16 @@ app.get("/scrape", function(req, res) {
         link: link,
         summary: summary
       });
+
+      // Create a new Article using the scrape results object
+      db.Article.create(results).then(function(dbArticle){
+        // If successful...
+        res.send("Scrape Complete");
+      })
+      .catch(function(err) {
+        // If an error...
+        res.json(err);
+      }); // END of new database item
     });
 
     console.log(results);
