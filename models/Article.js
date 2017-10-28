@@ -1,6 +1,8 @@
 // ***** DEPENDENCIES *****
 var mongoose = require("mongoose");
 
+var Schema = mongoose.Schema;
+
 // save a reference to the Schema constructor
 var ArticleSchema = new Schema({
   title: {
