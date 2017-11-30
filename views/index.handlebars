@@ -1,0 +1,16 @@
+<h1>Techy News</h1>
+
+<h2>(according to Washington Post)</h2>
+
+<ul>
+  {{#each Article}}
+    <!-- {{#unless this.sleepy}} -->
+      <li>
+        <a href="this.link">{{this.title}}</a>
+        {{this.summary}}
+
+    
+      </li>
+    <!-- {{/unless}} -->
+  {{/each}}
+</ul>

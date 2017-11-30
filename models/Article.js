@@ -6,10 +6,11 @@ var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 
 // save a reference to the Schema constructor
-var ArticleSchema = new Schema({
+var articleSchema = new Schema({
   title: {
     type: String,
-    required: true
+    required: true,
+    unique: { index: { unique: true } }
   },
   link: {
     type: String,
@@ -18,6 +19,14 @@ var ArticleSchema = new Schema({
   summary: {
     type: String,
     required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  },
+  saved: {
+    type: Boolean,
+    default: false
   },
 
   // This allows us to populate the Article with an associated Note
@@ -28,6 +37,6 @@ var ArticleSchema = new Schema({
 });
 
 // creates model from the above Schema
-var Article = mongoose.model("Article", ArticleSchema);
+var Article = mongoose.model("Article", articleSchema);
 
 module.exports = Article;
