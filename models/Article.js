@@ -28,12 +28,6 @@ var articleSchema = new Schema({
     type: Boolean,
     default: false
   },
-
-  // This allows us to populate the Article with an associated Note
-  note: {
-    type: Schema.Types.ObjectId,
-    ref: "Note"
-  }
 });
 
 // creates model from the above Schema
