@@ -39,12 +39,17 @@ mongoose.connect("mongodb://localhost/wapoTechNews", {
   useMongoClient: true
 });
 
+var wapoArticles = []; //holds array of articles in the database
+
 // ***** ROUTING *****
+// app.get("/", function(req,res) {
+//   res.render("main.handlebars");
+// });
 
 // A GET to scrape the WaPo Tech Site
 app.get("/scrape", function(req, res) {
   request("https://www.washingtonpost.com/business/technology", function(error, response, html) {
-    var $ = cheerio.load(html);
+    var $ = cheerio.load("html");
 
     // an array to hold the results
     var results = [];
@@ -78,6 +83,7 @@ app.get("/scrape", function(req, res) {
 
   }); // END of scrape function
 }); // END of GET scrape route
+
 
 // Start the server
 app.listen(PORT, function() {

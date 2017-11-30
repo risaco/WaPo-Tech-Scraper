@@ -1,3 +1,5 @@
+// Article model
+
 // ***** DEPENDENCIES *****
 var mongoose = require("mongoose");
 
