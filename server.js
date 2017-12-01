@@ -46,44 +46,6 @@ var wapoArticles = []; //holds array of articles in the database
 //   res.render("main.handlebars");
 // });
 
-// A GET to scrape the WaPo Tech Site
-app.get("/scrape", function(req, res) {
-  request("https://www.washingtonpost.com/business/technology", function(error, response, html) {
-    var $ = cheerio.load("html");
-
-    // an array to hold the results
-    var results = [];
-
-    // grabbing every story headline
-    $("div.story-list-story").each(function(i, element) {
-
-      var title = $(element).find("div.story-headline").find("h3").find("a").text();
-      var link = $(element).find("div.story-headline").find("h3").find("a").attr("href");
-      var summary = $(element).find("div.story-description").find("p").text();
-
-      // Save these results in an object that pushes to the results array
-      results.push({
-        title: title,
-        link: link,
-        summary: summary
-      });
-
-      // Create a new Article using the scrape results object
-      db.Article.create(results).then(function(dbArticle){
-        // If successful...
-        res.send("Scrape Complete");
-      })
-      .catch(function(err) {
-        // If an error...
-        res.json(err);
-      }); // END of new database item
-    });
-
-    console.log(results);
-
-  }); // END of scrape function
-}); // END of GET scrape route
-
 
 // Start the server
 app.listen(PORT, function() {
