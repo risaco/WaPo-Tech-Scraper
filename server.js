@@ -9,6 +9,9 @@ var PORT = process.env.PORT || 3000;
 // ***** INITIALIZING EXPRESS *****
 var app = express();
 
+// Require Routes
+var routes = require("./routes");
+
 // using morgan logger for logging requests
 app.use(logger("dev"));
 // using body-parser for handling form submission
