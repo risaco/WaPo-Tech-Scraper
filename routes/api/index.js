@@ -6,7 +6,7 @@ var scrapeRoutes = require("./scraper");
 var noteRoutes = require("./notes");
 var articleRoutes = require("./articles");
 
-router.use("/scrape", scrapeRoutes);
+router.use("/scraper", scrapeRoutes);
 router.use("/notes", noteRoutes);
 router.use("/articles", articleRoutes);
 

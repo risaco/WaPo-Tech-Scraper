@@ -50,7 +50,7 @@ $(document).ready(function() {
         "<div class='card-content'>",
         "<p>" + article.summary + "</p>",
         "</div></div></div>"
-      ].join("");
+      ].join("")
     );
     // attach the article's id to the jQuery element
     // we'll need this for tracking which article the user saves
@@ -66,7 +66,7 @@ $(document).ready(function() {
         "<h3>Well, darn! We don't have any new articles.</h4>",
         "<h4><a href='/saved'>See Saved Articles!</a></h4>",
         "</div>"
-      ].join("");
+      ].join("")
     );
     articleContainer.append(emptyAlert);
   } // END renderEmpty function

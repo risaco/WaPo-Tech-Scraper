@@ -31,7 +31,7 @@ var articleSchema = new Schema({
   saved: {
     type: Boolean,
     default: false
-  },
+  }
 });
 
 // creates model from the above Schema

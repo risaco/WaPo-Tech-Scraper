@@ -7,8 +7,7 @@ var scrape = require("../scripts/scrape"); // access to the scraper script
 module.exports = {
   scrapeArticles: function(req, res) {
     // scrape the Washington Post Tech articles
-    return scrape()
-      .then(function(articles) {
+    return scrape().then(function(articles) {
         // then add them to the database
         return db.Article.create(articles);
       })
