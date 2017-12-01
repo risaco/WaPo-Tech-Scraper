@@ -4,48 +4,36 @@ var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 
-// ***** SCRAPING TOOLS *****
-var request = require("request"); // similar to AJAX method from jQuery
-var cheerio = require("cheerio"); // for scraping
-
-// ***** REQUIRING ALL MODELS *****
-var db = require("./models");
-
-var PORT = 3000;
+var PORT = process.env.PORT || 3000;
 
 // ***** INITIALIZING EXPRESS *****
 var app = express();
-
-// Setting up handlebars
-var exphbs = require("express-handlebars");
-
-// Set default layout to main.handlebars
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-
-// Set the view engine to handlebars
-app.set("view engine", "handlebars");
-
 
 // using morgan logger for logging requests
 app.use(logger("dev"));
 // using body-parser for handling form submission
 app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.json());
 // use express.static to serve the public folder as a static directory
 app.use(express.static("public"));
 
+// Setting up handlebars
+var exphbs = require("express-handlebars");
+// Set default layout to main.handlebars
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+// Set the view engine to handlebars
+app.set("view engine", "handlebars");
+
+// Use our Routes
+app.use(routes);
+
+// If deployed, this variable will use deployed database, otherwise it run locally on the local database
+var MONGODB_URI = process.env.MONGOD_URI || "mongodb://localhost/wapoTechNews"
 // Set mongoose
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/wapoTechNews", {
+mongoose.connect(MONGODB_URI, {
   useMongoClient: true
 });
-
-var wapoArticles = []; //holds array of articles in the database
-
-// ***** ROUTING *****
-// app.get("/", function(req,res) {
-//   res.render("main.handlebars");
-// });
-
 
 // Start the server
 app.listen(PORT, function() {
