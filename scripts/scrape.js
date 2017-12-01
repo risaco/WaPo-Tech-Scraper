@@ -21,6 +21,8 @@ var scrape = function() {
         .find("div.story-headline").find("h3").find("a").attr("href");
       var summary = $(element)
         .find("div.story-description").find("p").text().trim();
+      var image = $(element)
+        .find("div.story-image").find("img").attr("src");
 
       // As long as the title, link, and summary are not empty...
       if(title && link && summary){
@@ -28,7 +30,8 @@ var scrape = function() {
         var articleData = {
           title: title,
           link: link,
-          summary: summary
+          summary: summary,
+          image: image
         };
 
         articles.push(articleData);
